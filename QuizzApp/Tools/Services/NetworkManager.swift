@@ -28,4 +28,20 @@ final class NetworkManager {
         
         return url
     }
+    
+    func getCategories(completion: @escaping ([Category]?) -> Void ) {
+        let path = "/categories/"
+        
+        let url = createURL(path: path)
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil, let data = data else {
+                completion(nil)
+                return
+            }
+            
+            let categories = try? JSONDecoder().decode([Category].self, from: data)
+            categories == nil ? completion(nil) : completion(categories)
+        }.resume()
+    }
 }

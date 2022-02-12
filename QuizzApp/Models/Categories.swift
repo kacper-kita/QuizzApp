@@ -15,7 +15,3 @@ struct Category: Decodable {
     let color: String?
     let description: String?
 }
-
-struct Categories: Decodable {
-    let category: [Category]?
-}
