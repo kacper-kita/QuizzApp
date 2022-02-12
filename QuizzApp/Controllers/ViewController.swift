@@ -8,13 +8,32 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private lazy var mainView: MainView = {
+        let mainView = MainView()
+        return mainView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-
+        
+        setupView()
     }
     
+    private func setupView() {
+        view.addSubview(mainView)
+        view.backgroundColor = .white
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            mainView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            mainView.heightAnchor.constraint(equalToConstant: 30)
+        ])
+    }
 
 }
 
