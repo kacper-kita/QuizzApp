@@ -35,6 +35,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		363594DA27B7ADC400E81B8A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3639E8F227AB0988002DEC01 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		363594DB27B7ADD100E81B8A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		363594DC27B7ADD500E81B8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		363594DD27B7ADDB00E81B8A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		363594DE27B7ADE000E81B8A /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				363594E027B7AE1C00E81B8A /* Services */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		363594DF27B7ADEA00E81B8A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3639E8F727AB0989002DEC01 /* Assets.xcassets */,
+				3639E8F927AB0989002DEC01 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		363594E027B7AE1C00E81B8A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		3639E8E227AB0988002DEC01 = {
 			isa = PBXGroup;
 			children = (
@@ -54,11 +107,14 @@
 		3639E8ED27AB0988002DEC01 /* QuizzApp */ = {
 			isa = PBXGroup;
 			children = (
+				363594DE27B7ADE000E81B8A /* Tools */,
+				363594DD27B7ADDB00E81B8A /* ViewModels */,
+				363594DC27B7ADD500E81B8A /* Views */,
+				363594DB27B7ADD100E81B8A /* Models */,
+				363594DA27B7ADC400E81B8A /* Controllers */,
+				363594DF27B7ADEA00E81B8A /* Resources */,
 				3639E8EE27AB0988002DEC01 /* AppDelegate.swift */,
 				3639E8F027AB0988002DEC01 /* SceneDelegate.swift */,
-				3639E8F227AB0988002DEC01 /* ViewController.swift */,
-				3639E8F727AB0989002DEC01 /* Assets.xcassets */,
-				3639E8F927AB0989002DEC01 /* LaunchScreen.storyboard */,
 				3639E8FC27AB0989002DEC01 /* Info.plist */,
 			);
 			path = QuizzApp;
