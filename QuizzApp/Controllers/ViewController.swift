@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var viewModel = CategoriesListViewModel()
+    
     private lazy var mainView: MainView = {
         let mainView = MainView()
         return mainView
@@ -18,6 +20,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        getCategories()
+    }
+    
+    private func getCategories() {
+        DispatchQueue.main.async {
+            self.viewModel.getCategory { _ in
+                self.mainView.mainCollectionView.reloadData()
+            }
+        }
     }
     
     private func setupView() {
@@ -32,9 +43,10 @@ class ViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            mainView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            mainView.heightAnchor.constraint(equalToConstant: 30)
+            mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mainView.topAnchor.constraint(equalTo: view.topAnchor),
+            mainView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
@@ -42,16 +54,19 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2.5, height: collectionView.frame.width/2)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width/3)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return viewModel.categoriesVM.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .gray
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MainViewCollectionViewCell
+        
+        let items = viewModel.categoriesVM[indexPath.row]
+        cell.categoryLabel.text = items.name
+        
         return cell
     }
 }

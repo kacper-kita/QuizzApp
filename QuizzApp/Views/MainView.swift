@@ -35,9 +35,11 @@ final class MainView: UIView {
         let layout = UICollectionViewFlowLayout()
         let collectonView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 60
         collectonView.translatesAutoresizingMaskIntoConstraints = false
-        collectonView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectonView.register(MainViewCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectonView.showsVerticalScrollIndicator = false
         
         return collectonView
     }()
@@ -63,21 +65,21 @@ final class MainView: UIView {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 70),
             titleLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
         
         NSLayoutConstraint.activate([
-            subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
             subTitleLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
         
         NSLayoutConstraint.activate([
-            mainCollectionView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 15),
-            mainCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            mainCollectionView.rightAnchor.constraint(equalTo: rightAnchor),
+            mainCollectionView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 80),
+            mainCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            mainCollectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
             mainCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
