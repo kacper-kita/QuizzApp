@@ -31,6 +31,17 @@ final class MainView: UIView {
         return label
     }()
     
+    public lazy var mainCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectonView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        layout.scrollDirection = .horizontal
+        collectonView.translatesAutoresizingMaskIntoConstraints = false
+        collectonView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        
+        return collectonView
+    }()
+    
     
     init() {
         super.init(frame: .zero)
@@ -45,6 +56,7 @@ final class MainView: UIView {
     private func setupView() {
         addSubview(titleLabel)
         addSubview(subTitleLabel)
+        addSubview(mainCollectionView)
 
         setupConstraints()
     }
@@ -60,6 +72,13 @@ final class MainView: UIView {
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
             subTitleLabel.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            mainCollectionView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 15),
+            mainCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            mainCollectionView.rightAnchor.constraint(equalTo: rightAnchor),
+            mainCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

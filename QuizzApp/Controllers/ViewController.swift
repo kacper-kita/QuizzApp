@@ -24,6 +24,9 @@ class ViewController: UIViewController {
         view.addSubview(mainView)
         view.backgroundColor = .white
         
+        mainView.mainCollectionView.dataSource = self
+        mainView.mainCollectionView.delegate = self
+        
         setupConstraints()
     }
     
@@ -35,5 +38,21 @@ class ViewController: UIViewController {
         ])
     }
 
+}
+
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width/2.5, height: collectionView.frame.width/2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.backgroundColor = .gray
+        return cell
+    }
 }
 
