@@ -89,8 +89,8 @@ class MainViewCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             categoryImage.rightAnchor.constraint(equalTo: rightAnchor),
             categoryImage.topAnchor.constraint(equalTo: topAnchor),
-            categoryImage.heightAnchor.constraint(equalToConstant: 60),
-            categoryImage.widthAnchor.constraint(equalToConstant: 60)
+            categoryImage.heightAnchor.constraint(equalToConstant: 40),
+            categoryImage.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
 }

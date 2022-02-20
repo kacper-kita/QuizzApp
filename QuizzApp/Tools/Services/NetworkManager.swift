@@ -18,7 +18,7 @@ final class NetworkManager {
         var components = URLComponents()
         
         components.scheme = "https"
-        components.host = "quiz-app-restapi.herokuapp.com"
+        components.host = "jaugustyn.pythonanywhere.com"
         components.path = path
         let queryItemToken = URLQueryItem(name: "format", value: "json")
         components.queryItems = [queryItemToken]
