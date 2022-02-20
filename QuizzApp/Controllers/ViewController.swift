@@ -64,8 +64,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MainViewCollectionViewCell
         
-        let items = viewModel.categoriesVM[indexPath.row]
-        cell.categoryLabel.text = items.name
+        let categories = viewModel.categoriesVM[indexPath.row]
+        
+        cell.categoryVM = categories
         
         return cell
     }

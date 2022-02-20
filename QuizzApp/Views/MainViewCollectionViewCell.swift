@@ -8,6 +8,26 @@
 import UIKit
 
 class MainViewCollectionViewCell: UICollectionViewCell {
+    
+    var categoryVM: CategoriesViewModel? {
+        didSet {
+            if let categoryVM = categoryVM {
+                categoryLabel.text = categoryVM.name
+                NetworkManager.shared.getImage(urlString: categoryVM.image) { (data) in
+                    
+                    print(categoryVM.image)
+                    
+                    guard let data = data else {
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.categoryImage.image = UIImage(data: data)
+                    }
+                }
+            }
+        }
+    }
+
      lazy var categoryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +48,14 @@ class MainViewCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    lazy var categoryImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        
+        return image
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupView()
@@ -40,6 +68,7 @@ class MainViewCollectionViewCell: UICollectionViewCell {
     private func setupView() {
         addSubview(categoryLabel)
         addSubview(playButton)
+        addSubview(categoryImage)
         layer.cornerRadius = 15.0
         backgroundColor = UIColor(named: "CellCollor")
 
@@ -55,6 +84,13 @@ class MainViewCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             playButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             playButton.topAnchor.constraint(equalTo: topAnchor, constant: 15),
+        ])
+        
+        NSLayoutConstraint.activate([
+            categoryImage.rightAnchor.constraint(equalTo: rightAnchor),
+            categoryImage.topAnchor.constraint(equalTo: topAnchor),
+            categoryImage.heightAnchor.constraint(equalToConstant: 60),
+            categoryImage.widthAnchor.constraint(equalToConstant: 60)
         ])
     }
 }
