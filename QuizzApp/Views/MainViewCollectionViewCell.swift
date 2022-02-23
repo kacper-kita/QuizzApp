@@ -15,8 +15,6 @@ class MainViewCollectionViewCell: UICollectionViewCell {
                 categoryLabel.text = categoryVM.name
                 NetworkManager.shared.getImage(urlString: categoryVM.image) { (data) in
                     
-                    print(categoryVM.image)
-                    
                     guard let data = data else {
                         return
                     }
@@ -87,10 +85,10 @@ class MainViewCollectionViewCell: UICollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            categoryImage.rightAnchor.constraint(equalTo: rightAnchor),
-            categoryImage.topAnchor.constraint(equalTo: topAnchor),
-            categoryImage.heightAnchor.constraint(equalToConstant: 40),
-            categoryImage.widthAnchor.constraint(equalToConstant: 40)
+            categoryImage.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
+            categoryImage.topAnchor.constraint(equalTo: topAnchor, constant: -30),
+            categoryImage.heightAnchor.constraint(equalToConstant: 80),
+            categoryImage.widthAnchor.constraint(equalToConstant: 80)
         ])
     }
 }

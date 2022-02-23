@@ -36,7 +36,8 @@ final class MainView: UIView {
         let collectonView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 60
+        layout.headerReferenceSize = CGSize(width: 0, height: 30)
+        layout.minimumLineSpacing = 50
         collectonView.translatesAutoresizingMaskIntoConstraints = false
         collectonView.register(MainViewCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectonView.showsVerticalScrollIndicator = false
@@ -77,7 +78,7 @@ final class MainView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            mainCollectionView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 80),
+            mainCollectionView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 30),
             mainCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             mainCollectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
             mainCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
