@@ -10,6 +10,7 @@ import Foundation
 final class NetworkManager {
     
     static let shared = NetworkManager()
+    let imageCache = NSCache<NSString, NSData>()
     
     //MARK: - Functions
     
@@ -17,7 +18,7 @@ final class NetworkManager {
         var components = URLComponents()
         
         components.scheme = "https"
-        components.host = "quiz-app-restapi.herokuapp.com"
+        components.host = "jaugustyn.pythonanywhere.com"
         components.path = path
         let queryItemToken = URLQueryItem(name: "format", value: "json")
         components.queryItems = [queryItemToken]
@@ -43,5 +44,27 @@ final class NetworkManager {
             let categories = try? JSONDecoder().decode([Category].self, from: data)
             categories == nil ? completion(nil) : completion(categories)
         }.resume()
+    }
+    
+    func getImage(urlString: String, completion: @escaping (Data?) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return
+        }
+        
+        if let cachedImage = imageCache.object(forKey: NSString(string: urlString)) {
+            completion(cachedImage as Data)
+        } else {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard error == nil, let data = data else {
+                    completion(nil)
+                    return
+                }
+                
+                self.imageCache.setObject(data as NSData, forKey: NSString(string: urlString))
+                completion(data)
+                
+            }.resume()
+        }
     }
 }
