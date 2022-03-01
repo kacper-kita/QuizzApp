@@ -19,6 +19,8 @@
 		3639E8FB27AB0989002DEC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3639E8F927AB0989002DEC01 /* LaunchScreen.storyboard */; };
 		3684C0C327B7CAA100874C72 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684C0C227B7CAA100874C72 /* MainView.swift */; };
 		3684C0C627B7CCE100874C72 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3684C0C527B7CCE100874C72 /* Colors.xcassets */; };
+		369A1FBB27C6994B00C0CCC8 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369A1FBA27C6994B00C0CCC8 /* QuizView.swift */; };
+		369A1FBD27C6997500C0CCC8 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369A1FBC27C6997500C0CCC8 /* QuizViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		3639E8FC27AB0989002DEC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3684C0C227B7CAA100874C72 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3684C0C527B7CCE100874C72 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		369A1FBA27C6994B00C0CCC8 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		369A1FBC27C6997500C0CCC8 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				3639E8F227AB0988002DEC01 /* ViewController.swift */,
+				369A1FBC27C6997500C0CCC8 /* QuizViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -70,6 +75,7 @@
 			children = (
 				3684C0C227B7CAA100874C72 /* MainView.swift */,
 				360AAC0827C159C7002810F1 /* MainViewCollectionViewCell.swift */,
+				369A1FBA27C6994B00C0CCC8 /* QuizView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +225,8 @@
 				360AAC0927C159C7002810F1 /* MainViewCollectionViewCell.swift in Sources */,
 				363594EC27B7B56600E81B8A /* Categories.swift in Sources */,
 				3639E8EF27AB0988002DEC01 /* AppDelegate.swift in Sources */,
+				369A1FBD27C6997500C0CCC8 /* QuizViewController.swift in Sources */,
+				369A1FBB27C6994B00C0CCC8 /* QuizView.swift in Sources */,
 				363594EE27B7BD9B00E81B8A /* CategoriesViewModel.swift in Sources */,
 				3639E8F127AB0988002DEC01 /* SceneDelegate.swift in Sources */,
 			);

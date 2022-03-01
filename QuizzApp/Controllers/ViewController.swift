@@ -23,6 +23,13 @@ class ViewController: UIViewController {
         getCategories()
     }
     
+    @objc func pushToQuizController() {
+        let quizViewController = QuizViewController()
+        quizViewController.modalPresentationStyle = .fullScreen
+        
+        self.navigationController?.pushViewController(quizViewController, animated: true)
+    }
+    
     private func getCategories() {
         DispatchQueue.main.async {
             self.viewModel.getCategory { _ in
@@ -65,6 +72,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MainViewCollectionViewCell
         
         let categories = viewModel.categoriesVM[indexPath.row]
+        cell.playButton.addTarget(self, action: #selector(self.pushToQuizController), for: .touchUpInside)
         
         cell.categoryVM = categories
         

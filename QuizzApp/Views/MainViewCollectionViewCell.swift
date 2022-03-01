@@ -36,7 +36,7 @@ class MainViewCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var playButton: UIButton = {
+    lazy var playButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "play.square", withConfiguration: UIImage.SymbolConfiguration(pointSize: 42))?.withRenderingMode(.alwaysTemplate), for: .normal)
